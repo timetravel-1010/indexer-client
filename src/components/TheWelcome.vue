@@ -9,7 +9,7 @@
     <div class="mt-4 border border-gray-300 rounded p-2">
         <ul>
             <li v-for="email in emails" :key="email._id" class="mb-2">
-                {{ email._source.email.Date }}
+                {{ email._source.email.messageId }}
             </li>
         </ul>
     </div>
@@ -31,6 +31,6 @@ fetch('http://localhost:8080/email?index=foo2024&page=4', {
     .then(response => response.json())
     .then(data => {
         emails.value = data
-        console.log(emails.value[0])
+        console.log(emails.value)
     });
 </script>
