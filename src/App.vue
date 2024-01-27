@@ -5,25 +5,27 @@ import MainHeader from './components/MainHeader.vue';
 
 import { ref } from 'vue';
 
-const searchTerm = ref<string>("");
 const emailInbox = ref();
 
 const setTerm = (term: string) => {
-    searchTerm.value = term;
-    console.log(term);
-    emailInbox.value.searchEmails(term);
+  console.log(term);
+  emailInbox.value.searchEmails(term);
 }
 
 
 </script>
 
 <template>
+  <div class="h-screen flex flex-col">
     <header>
-        <MainHeader @on-search="setTerm" />
+      <MainHeader @on-search="setTerm" />
     </header>
-    <main class="border border-black">
-        <EmailInbox :search-term=searchTerm ref="emailInbox" />
-    </main>
+    <div class="flex-1 flex overflow-x-hidden">
+      <main class="flex w-full">
+        <EmailInbox ref="emailInbox" />
+      </main>
+    </div>
+  </div>
 </template>
 
 <style ></style>
