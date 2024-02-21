@@ -16,7 +16,7 @@ const onDisplayEmail = (e: Email) => {
 
 const searchEmails = (term: string) => {
     console.log("term:", term);
-    let url = new URL('http://localhost:8080/email/search?index=foo2024&page=10');
+    let url = new URL('http://localhost:8080/emails/search?index=foo2024&page=10');
     url.searchParams.append("term", term);
     fetch(url, {
         method: 'GET',
