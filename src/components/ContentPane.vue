@@ -1,18 +1,13 @@
 <script setup lang="ts">
 import type { Email } from '../models/Email';
+import type { Hit } from '../models/Hit';
 import { ref } from 'vue';
 
 const email = ref<Email | null>(null);
 
-const displayEmail = (e: Email) => {
-    console.log("entra!");
-    email.value = e;
-    console.log("este es", email.value._source);
+const displayEmail = (h: Hit) => {
+    email.value = h._source.email;
 }
-
-let a = {
-    foo: `console.log("this is the injection!");`
-};
 
 defineExpose({
     displayEmail
@@ -22,22 +17,17 @@ defineExpose({
 
 <template>
     <div class="w-1/2">
-        <div v-if="email !== null" class="border border-red-500 py-10 px-8 space-y-4">
+        <div v-if="email !== null" class="border border-red-500 py-10 px-8 space-y-4 ">
             <p>
-                <strong>Subject:</strong> {{ email._source.email.subject }}
+                <strong>Subject:</strong> {{ email["Subject"] }}
             </p>
             <p>
-                <strong>From:</strong> {{ email._source.email.from }}
+                <strong>From:</strong> {{ email["From"] }}
             </p>
             <p>
-                <strong>To:</strong> {{ email._source.email.to.reduce((e, emailList) => emailList + ", " + e, "") }}
+                <strong>To:</strong> {{ email["To"]?.reduce((e, emailList) => emailList.Address + ", " + e, "") }}
             </p>
-            <pre>
-            {{ a.foo }}
-            </pre>
-            <pre>
-        {{ email._source.email.body }}
-      </pre>
+            <pre>{{ email["Body"] }}</pre>
         </div>
         <div v-else class="h-screen flex">
             <div class="m-auto">
