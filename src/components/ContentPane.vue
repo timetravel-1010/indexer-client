@@ -19,15 +19,15 @@ defineExpose({
     <div class="w-1/2">
         <div v-if="email !== null" class="border border-red-500 py-10 px-8 space-y-4 ">
             <p>
-                <strong>Subject:</strong> {{ email.subject }}
+                <strong>Subject:</strong> {{ email["Subject"] }}
             </p>
             <p>
-                <strong>From:</strong> {{ email.from }}
+                <strong>From:</strong> {{ email["From"] }}
             </p>
             <p>
-                <strong>To:</strong> {{ email.to.reduce((e, emailList) => emailList + ", " + e, "") }}
+                <strong>To:</strong> {{ email["To"]?.reduce((e, emailList) => emailList.Address + ", " + e, "") }}
             </p>
-            <pre>{{ email.body }}</pre>
+            <pre>{{ email["Body"] }}</pre>
         </div>
         <div v-else class="h-screen flex">
             <div class="m-auto">

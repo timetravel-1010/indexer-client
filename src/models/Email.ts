@@ -1,20 +1,22 @@
+import type { Address } from "cluster";
+
 export interface Email {
-    messageId: string;
-    date: string;
-    from: string;
-    to: string[];
-    cc: string[];
-    bcc: string[];
-    subject: string;
-    mimeVersion: string;
-    contentType: string;
-    contentTransferEncoding: string;
-    xFrom: string;
-    xTo: string[];
-    xcc: string[];
-    xbcc: string[];
-    xFolder: string;
-    xOrigin: string;
-    xFileName: string;
-    body: string;
+    "Message-Id": string;
+    "Date": string;
+    "From": string;
+    "To": Address[];
+    "Cc": Address[];
+    "Bcc": Address[];
+    "Subject": string;
+    "Mime-Version": string;
+    "Content-Type": string;
+    "content-Transfer-Encoding": string;
+    "X-From": string;
+    "X-To": Address[];
+    "X-Cc": Address[];
+    "X-Bcc": Address[];
+    "X-Folder": string;
+    "X-Origin": string;
+    "X-FileName": string;
+    "Body": string;
 }

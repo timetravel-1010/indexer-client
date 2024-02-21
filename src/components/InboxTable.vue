@@ -56,7 +56,7 @@ const props = defineProps<{
                                     <div class="flex flex-col">
                                         <p
                                             class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                                            {{ email._source.email.from }}
+                                            {{ email._source.email["From"] }}
                                         </p>
                                     </div>
                                 </div>
@@ -66,8 +66,11 @@ const props = defineProps<{
                                     <div class="flex flex-col">
                                         <p
                                             class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                                            {{ email._source.email.to?.length > 0 ? email._source.email.to[0] + "..." :
-                                                "nil" }}
+                                            {{ email._source.email["To"]?.length > 0 ? email._source.email["To"][0].Address
+                                                +
+                                                "..."
+                                                :
+                                                "N/A" }}
                                         </p>
                                     </div>
                                 </div>
@@ -76,14 +79,14 @@ const props = defineProps<{
                                 <div class="flex flex-col">
                                     <p
                                         class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                                        {{ email._source.email.subject }}
+                                        {{ email._source.email["Subject"] }}
                                     </p>
                                 </div>
                             </td>
                             <td class="p-4 border-b border-blue-gray-50">
                                 <p
                                     class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                                    {{ email._source.email.date }}
+                                    {{ email._source.email["Date"] }}
                                 </p>
                             </td>
                         </tr>
