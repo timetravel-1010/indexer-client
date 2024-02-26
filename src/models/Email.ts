@@ -1,20 +1,20 @@
-import type { Address } from "cluster";
+import type { EmailAddress } from "./Address.ts";
 
 export interface Email {
     "Message-Id": string;
     "Date": string;
     "From": string;
-    "To": Address[];
-    "Cc": Address[];
-    "Bcc": Address[];
+    "To": EmailAddress[];
+    "Cc": EmailAddress[];
+    "Bcc": EmailAddress[];
     "Subject": string;
     "Mime-Version": string;
     "Content-Type": string;
     "content-Transfer-Encoding": string;
     "X-From": string;
-    "X-To": Address[];
-    "X-Cc": Address[];
-    "X-Bcc": Address[];
+    "X-To": EmailAddress[];
+    "X-Cc": EmailAddress[];
+    "X-Bcc": EmailAddress[];
     "X-Folder": string;
     "X-Origin": string;
     "X-FileName": string;

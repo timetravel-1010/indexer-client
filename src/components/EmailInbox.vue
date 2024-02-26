@@ -10,13 +10,12 @@ const emails = ref<Hit[]>([]);
 const contentPane = ref();
 
 const onDisplayEmail = (e: Email) => {
-    console.log("row clicled!");
     contentPane.value.displayEmail(e);
 }
 
 const searchEmails = (term: string) => {
-    console.log("term:", term);
-    let url = new URL('http://localhost:8080/emails/search?index=foo2024&page=10');
+    //console.log("term:", term);
+    let url = new URL('http://localhost:8080/emails/search?index=custom&page=10');
     url.searchParams.append("term", term);
     fetch(url, {
         method: 'GET',
@@ -30,7 +29,6 @@ const searchEmails = (term: string) => {
         .then((data: EmailResponse) => {
             emails.value = data.hits.hits;
             console.log('data: ', data.hits);
-            console.log('res:', emails.value)
         })
         .catch(error => {
             console.error('Error: ', error);
