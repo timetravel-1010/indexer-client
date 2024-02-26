@@ -1,10 +1,23 @@
 <script setup lang="ts">
 
 import type { Hit } from '@/models/Hit';
+import type { EmailAddress } from '@/models/Address';
 
 const props = defineProps<{
     emails: Hit[];
 }>()
+
+
+
+const showTo = (to: EmailAddress[]): string => {
+
+    if (to === undefined || to === null || to?.length === 0) {
+        return 'N/A';
+    } else if (to?.length === 1) {
+        return to[0].Address;
+    }
+    return to[0].Address + ', ...';
+}
 
 
 </script>
@@ -66,11 +79,7 @@ const props = defineProps<{
                                     <div class="flex flex-col">
                                         <p
                                             class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                                            {{ email._source.email["To"]?.length > 0 ? email._source.email["To"][0].Address
-                                                +
-                                                "..."
-                                                :
-                                                "N/A" }}
+                                            {{ showTo(email._source.email["To"]) }}
                                         </p>
                                     </div>
                                 </div>
